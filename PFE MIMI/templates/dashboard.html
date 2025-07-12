@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Power BI Analytics{% endblock %}
+
+{% block content %}
+<section class="dashboard-header">
+    <div class="dashboard-container">
+        <div class="dashboard-title-section">
+            <h1 class="dashboard-title">
+                <i class="fas fa-chart-bar"></i>
+                Power BI Dashboard
+            </h1>
+            <p class="dashboard-subtitle">Interactive data visualization and analytics</p>
+        </div>
+        <div class="dashboard-controls">
+            <button class="btn btn-secondary" id="refreshBtn">
+                <i class="fas fa-sync-alt"></i>
+                Refresh
+            </button>
+            <button class="btn btn-secondary" id="fullscreenBtn">
+                <i class="fas fa-expand"></i>
+                Fullscreen
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-content">
+    <div class="dashboard-container">
+        <!-- Power BI Embed Container -->
+        <div class="powerbi-container">
+            <div class="powerbi-embed" id="powerbi-embed">
+                <!-- This is where the Power BI report will be embedded -->
+                <div class="powerbi-placeholder">
+                    <div class="placeholder-content">
+                        <i class="fas fa-chart-line placeholder-icon"></i>
+                        <h3>Power BI Dashboard</h3>
+                        <p>Your Power BI dashboard will be displayed here.</p>
+                        <div class="placeholder-instructions">
+                            <h4>To embed your Power BI dashboard:</h4>
+                            <ol>
+                                <li>Get your Power BI embed URL from Power BI Service</li>
+                                <li>Update the dashboard configuration</li>
+                                <li>Add your workspace ID and report ID</li>
+                            </ol>
+                        </div>
+                        <button class="btn btn-primary" id="configureBtn">
+                            <i class="fas fa-cog"></i>
+                            Configure Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-stats">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>1,234</h3>
+                        <p>Active Users</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>89.5%</h3>
+                        <p>Performance</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>2.4TB</h3>
+                        <p>Data Processed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>24/7</h3>
+                        <p>Uptime</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Configuration Modal -->
+<div class="modal" id="configModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Configure Power BI Dashboard</h3>
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="configForm">
+                <div class="form-group">
+                    <label for="embedUrl">Embed URL:</label>
+                    <input type="url" id="embedUrl" name="embedUrl" placeholder="https://app.powerbi.com/reportEmbed?reportId=...">
+                </div>
+                <div class="form-group">
+                    <label for="reportId">Report ID:</label>
+                    <input type="text" id="reportId" name="reportId" placeholder="Enter your Power BI Report ID">
+                </div>
+                <div class="form-group">
+                    <label for="workspaceId">Workspace ID:</label>
+                    <input type="text" id="workspaceId" name="workspaceId" placeholder="Enter your Power BI Workspace ID">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Apply Configuration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
